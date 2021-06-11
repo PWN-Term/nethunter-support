@@ -8,12 +8,13 @@ all:
 	@echo Run \'make install\' to install nethunter-support.
 
 install:
+	@echo "[*]: Making sbin / bin folders"
 	@mkdir -p $(PREFIX)/bin
-	@cp -p sbin/kali $(PREFIX)/sbin/kali
-	@cp -p sbin/hid-keyboard $(PREFIX)/sbin/hid-keyboard
-	@chmod +x $(PREFIX)/sbin/kali
-	@chmod +x $(PREFIX)/sbin/hid-keyboard
+	@mkdir -p $(PREFIX)/sbin
+	@echo "[*]: Chmod +x stuff"
+	@chmod +x sbin/*
+	@echo "[*]: Moving stuff to .../sbin"
+	@cp -p sbin/* $(PREFIX)/sbin
 
 uninstall:
-	@rm -rf $(PREFIX)/etc/bash.motd
-	@rm -rf $(PREFIX)/etc/bash.motd
+	@rm -rf $(PREFIX)/sbin/bootkali* $(PREFIX)/sbin/busybox_nh $(PREFIX)/sbin/chrootmgr $(PREFIX)/sbin/hid-keyboard $(PREFIX)/sbin/kali $(PREFIX)/sbin/killkali

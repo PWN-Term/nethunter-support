@@ -1,0 +1,31 @@
+#!/data/data/hilled.pwnterm/files/usr/bin/bash
+
+##########################################################################
+#### DEFINE GLOBAL ENVIRONMENT VARIABLES FOR ALL NETHUNTER APP SCRIPT ####
+##########################################################################
+
+unset LD_PRELOAD
+
+## Define the nethunter app package name.
+APP_PGK_NAME=com.offsec.nethunter
+
+## Define the root directory path of chroot containers
+NHSYSTEM_PATH=/data/local/nhsystem
+
+## Define chroot sudo path
+CHROOT_EXEC=/usr/bin/sudo
+
+## Combine android $PATH to kali chroot $PATH
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
+
+## Define busybox path.
+BUSYBOX=busybox_nh
+
+## Define the Kali Chroot path.
+MNT=`readlink -e $NHSYSTEM_PATH/kalifs`
+if [ -z "$MNT" ]; then
+    MNT=`cat /data/data/$APP_PGK_NAME/shared_prefs/$APP_PGK_NAME.xml | grep "\"chroot_path\"" | sed "s/^.*\"chroot_path\">\(.*\)<\/string>/\1/g"`
+fi
+
+## Define the path of xz tool
+XZ=/data/data/$APP_PGK_NAME/files/scripts/bin/xz

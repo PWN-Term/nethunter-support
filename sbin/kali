@@ -32,4 +32,4 @@ echo $cmd
 sleep 2
 cmd=$@
 
-/data/data/com.offsec.nethunter/files/scripts/bin/busybox_nh chroot /data/local/nhsystem/kalifs sudo $cmd
+busybox_nh chroot /data/local/nhsystem/kalifs sudo $cmd
