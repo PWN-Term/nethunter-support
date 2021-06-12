@@ -59,6 +59,13 @@ f_restore_setup() {
     rm -rf $MNT/tmp/.X11* $MNT/tmp/.X*-lock $MNT/root/.vnc/*.pid $MNT/root/.vnc/*.log > /dev/null 2>&1
 }
 
+f_umount_cgroups() {
+	bklog "[+] Unmounting cgroup"
+	umount -l $MNT/sys/fs/cgroup
+	sleep 1
+    umount -l /sys/fs/cgroup
+}
+
 ########## umount the fs one by one ##########
 f_umount_fs() {
     if $BUSYBOX mountpoint -q $MNT/$1; then
@@ -95,6 +102,7 @@ f_dir_umount() {
     $BUSYBOX sync
     f_kill_pids
     f_restore_setup
+    f_umount_cgroups
     bklog "[!] Removing all fs mounts.."
     FS=(dev/pts dev/shm dev proc sys system sdcard)
     for i in "${FS[@]}"; do

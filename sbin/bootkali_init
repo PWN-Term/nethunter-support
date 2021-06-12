@@ -136,6 +136,42 @@ f_mount_fs_to_kali() {
         $BUSYBOX mount -o bind /system $MNT/system && bklog "[+] mounted /system"
     fi
 
+    ######### SET CGROUPS ########
+    bklog "[*] Mounting cgroups"
+    opts='rw,nosuid,nodev,noexec,relatime'
+    cgroups='cpu cpuacct cpuset freezer memory pids schedtune'
+
+    # try to mount cgroup root dir and exit in case of failure
+    if ! mountpoint -q /sys/fs/cgroup 2>/dev/null; then
+        bklog "[+] Mounting cgroup cgroup/devices"
+        mkdir -p /sys/fs/cgroup
+        mount -t tmpfs -o "${opts}" cgroup_root /sys/fs/cgroup
+        bklog "[+] Mounting cgroup/devices"
+        mkdir -p /sys/fs/cgroup/devices
+        mount -t cgroup -o devices cgroup /sys/fs/cgroup/devices
+    fi
+
+    # try to mount cgroup2
+    if ! mountpoint -q /sys/fs/cgroup/cg2_bpf 2>/dev/null; then
+        bklog "[+] Mounting cgroup2"
+        mkdir -p /sys/fs/cgroup/cg2_bpf
+        mount -t cgroup2 -o "${opts}" cgroup2_root /sys/fs/cgroup/cg2_bpf
+    fi
+
+    # try to mount differents cgroups
+    for cg in ${cgroups}; do
+        if ! mountpoint -q "/sys/fs/cgroup/${cg}" 2>/dev/null; then
+            bklog "[+] Mounting cgroup/${cg}"
+            mkdir -p "/sys/fs/cgroup/${cg}"
+            mount -t cgroup -o "${opts},${cg}" "${cg}" "/sys/fs/cgroup/${cg}" \
+            || rmdir "/sys/fs/cgroup/${cg}"
+        fi
+    done
+
+    # Finally bind cgroup to chroot
+    mkdir -p $MNT/sys/fs/cgroup
+    $BUSYBOX mount -o bind /sys/fs/cgroup $MNT/sys/fs/cgroup && bklog "[+] mounted /sys/fs/cgroup to chroot"
+    $BUSYBOX mount -o bind /sys/fs/cgroup/devices $MNT/sys/fs/cgroup/devices
     ######### SET INTERNAL SDCARD ########
     f_mount_sdcard
 

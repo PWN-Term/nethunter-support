@@ -13,8 +13,8 @@ install:
 	@mkdir -p $(PREFIX)/sbin
 	@echo "[*]: Chmod +x stuff"
 	@chmod +x sbin/*
-	@echo "[*]: Moving stuff to .../sbin"
-	@cp -p sbin/* $(PREFIX)/sbin
+	@echo "[*]: Moving stuff to .../bin"
+	@cp -p sbin/* $(PREFIX)/bin
 
 uninstall:
-	@rm -rf $(PREFIX)/sbin/bootkali* $(PREFIX)/sbin/busybox_nh $(PREFIX)/sbin/chrootmgr $(PREFIX)/sbin/hid-keyboard $(PREFIX)/sbin/kali $(PREFIX)/sbin/killkali
+	@rm -rf $(PREFIX)/bin/bootkali* $(PREFIX)/bin/busybox_nh $(PREFIX)/bin/chrootmgr $(PREFIX)/bin/hid-keyboard $(PREFIX)/bin/kali $(PREFIX)/bin/killkali
