@@ -18,8 +18,11 @@ CHROOT_EXEC=/usr/bin/sudo
 ## Combine android $PATH to kali chroot $PATH
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 
+## Define pwn-term sys path
+PWNTERM=/data/data/hilled.pwnterm/files/usr
+
 ## Define busybox path.
-BUSYBOX=busybox_nh
+BUSYBOX=$PWNTERM/bin/busybox
 
 ## Define the Kali Chroot path.
 MNT=`readlink -e $NHSYSTEM_PATH/kalifs`
