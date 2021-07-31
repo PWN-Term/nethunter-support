@@ -22,7 +22,7 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 PWNTERM=/data/data/hilled.pwnterm/files/usr
 
 ## Define busybox path.
-BUSYBOX=$PWNTERM/bin/busybox
+BUSYBOX=$PWNTERM/bin/busybox_nh
 
 ## Define the Kali Chroot path.
 MNT=`readlink -e $NHSYSTEM_PATH/kalifs`
