@@ -7,7 +7,7 @@
 unset LD_PRELOAD
 
 ## Define the nethunter app package name.
-APP_PGK_NAME=com.offsec.nethunter
+APP_PGK_NAME=hilled.nhapp
 
 ## Define the root directory path of chroot containers
 NHSYSTEM_PATH=/data/local/nhsystem
@@ -31,4 +31,4 @@ if [ -z "$MNT" ]; then
 fi
 
 ## Define the path of xz tool
-XZ=/data/data/$APP_PGK_NAME/files/scripts/bin/xz
+XZ=/data/data/$PWNTERM/files/usr/bin/xz
