@@ -329,7 +329,7 @@ if [ ! $# -eq 0 ]; then
                     TARGET_DOWNLOAD_DIR=$2
                     [ -z "$TARGET_DOWNLOAD_FILE_URL" -o -z "$TARGET_DOWNLOAD_DIR" ] && f_chroot_usage && exit 1
                     [ ! -d "$TARGET_DOWNLOAD_DIR" ] && bklog "[-] $TARGET_DOWNLOAD_DIR not existed." && exit 1
-                    $BUSYBOX wget $TARGET_DOWNLOAD_FILE_URL -P $TARGET_DOWNLOAD_DIR
+                    wget $TARGET_DOWNLOAD_FILE_URL -P $TARGET_DOWNLOAD_DIR
                     ;;
                 *)
                     f_chroot_usage
@@ -392,7 +392,7 @@ if [ ! $# -eq 0 ]; then
                     local CORRECT_SHA
                     local COMPUTED_SHA
                     bklog "[!] Now checking the sha512 for $TARGET_FILE.."
-                    CORRECT_SHA="$($BUSYBOX wget $SHAFILE_URL_LINK -q -O -)"
+                    CORRECT_SHA="$(wget $SHAFILE_URL_LINK -q -O -)"
                     bklog "$CORRECT_SHA"
                     COMPUTED_SHA="$($BUSYBOX sha512sum $TARGET_FILE | sed 's/ .*\//  /g')"
                     bklog "$COMPUTED_SHA"
