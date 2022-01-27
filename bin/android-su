@@ -1,0 +1,13 @@
+#!/data/data/hilled.pwnterm/files/usr/bin/bash
+# Version: 1.0.2
+
+# export path for android bins/tools
+export PATH=/data/data/hilled.pwnterm/files/home/.pwnterm/script:/data/data/hilled.pwnterm/files/usr/bin:/data/data/hilled.pwnterm/files/usr/sbin:/sbin:/system/bin:/system/xbin:/apex/com.android.runtime/bin:/apex/com.android.art/bin:/odm/bin:/vendor/bin:.
+
+SU1=$(which su)
+SU2="$SU1 -c $@"
+
+# clear out old view
+clear
+
+$SU2 /system/bin/sh
