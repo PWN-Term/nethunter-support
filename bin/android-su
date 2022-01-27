@@ -4,6 +4,11 @@
 # export path for android bins/tools
 export PATH=/data/data/hilled.pwnterm/files/home/.pwnterm/script:/data/data/hilled.pwnterm/files/usr/bin:/data/data/hilled.pwnterm/files/usr/sbin:/sbin:/system/bin:/system/xbin:/apex/com.android.runtime/bin:/apex/com.android.art/bin:/odm/bin:/vendor/bin:.
 
+# Remove some exports that break default android binaries from running
+unset LD_LIBRARY_PATH
+unset LD_PRELOAD
+
+# Find and remember su location
 SU1=$(which su)
 SU2="$SU1 -c $@"
 
