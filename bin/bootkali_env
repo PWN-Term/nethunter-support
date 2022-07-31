@@ -7,7 +7,7 @@
 unset LD_PRELOAD
 
 ## Define the nethunter app package name.
-APP_PGK_NAME=hilled.nhapp
+APP_PGK_NAME=hilled.pwnhunter
 
 ## Define the root directory path of chroot containers
 NHSYSTEM_PATH=/data/local/nhsystem
