@@ -1,8 +1,8 @@
-#!/data/data/hilled.pwnterm/files/usr/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 # Version: 1.0.2-1
 
 # export path for android bins/tools
-export PATH=/data/data/hilled.pwnterm/files/home/.pwnterm/script:/data/data/hilled.pwnterm/files/usr/bin:/data/data/hilled.pwnterm/files/usr/sbin:/sbin:/system/bin:/system/xbin:/apex/com.android.runtime/bin:/apex/com.android.art/bin:/odm/bin:/vendor/bin:.
+export PATH=/data/data/com.termux/files/home/.pwnterm/script:/data/data/com.termux/files/usr/bin:/data/data/com.termux/files/usr/sbin:/sbin:/system/bin:/system/xbin:/apex/com.android.runtime/bin:/apex/com.android.art/bin:/odm/bin:/vendor/bin:.
 
 # Remove some exports that break default android binaries from running
 unset LD_LIBRARY_PATH
@@ -15,4 +15,4 @@ SU2="$SU1 -c $@"
 # clear out old view
 clear
 
-$SU2 /data/data/hilled.pwnterm/files/usr/bin/bash
+$SU2 /data/data/com.termux/files/usr/bin/bash

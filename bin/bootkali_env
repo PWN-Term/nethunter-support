@@ -1,4 +1,4 @@
-#!/data/data/hilled.pwnterm/files/usr/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 
 ##########################################################################
 #### DEFINE GLOBAL ENVIRONMENT VARIABLES FOR ALL NETHUNTER APP SCRIPT ####
@@ -19,7 +19,7 @@ CHROOT_EXEC=/usr/bin/sudo
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 
 ## Define pwn-term sys path
-PWNTERM=/data/data/hilled.pwnterm/files/usr
+PWNTERM=/data/data/com.termux/files/usr
 
 ## Define busybox path.
 BUSYBOX=$PWNTERM/bin/busybox

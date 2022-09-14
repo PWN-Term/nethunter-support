@@ -1,4 +1,4 @@
-PREFIX ?= /data/data/hilled.pwnterm/files/usr
+PREFIX ?= /data/data/com.termux/files/usr
 
 #
 # hid-keyboard is from: https://gitlab.com/kalilinux/nethunter/apps/kali-nethunter-app/-/blob/master/assets/scripts/bin/hid-keyboard-arm64
